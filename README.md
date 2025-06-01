@@ -17,6 +17,6 @@ pip install -r requirements.txt
 python main.py
 ```
 3. Input the name of the emoji you want to find
-![HowToUse](screentshot/howtouse.webp)
+![HowToUse](screenshot/howtouse.webp)
 4. Check your results
-![Result](screentshot/result.webp)
+![Result](screenshot/result.webp)
