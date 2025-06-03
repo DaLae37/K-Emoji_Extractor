@@ -1,4 +1,3 @@
-import json
 from src.emoji import emoji
 
 class emoji_parser() :

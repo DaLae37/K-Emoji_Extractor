@@ -1,6 +1,8 @@
 import requests
 import os
 
+from src.emoji_modifier import emoji_modifier
+
 class emoji_extractor() :
     def __init__(self) :
         self.headers = {
@@ -35,7 +37,7 @@ class emoji_extractor() :
         else :
             print("Find Error : ", response.status_code)
             
-    def download_emoji(self, url_list, title) :
+    def download_emoji(self, url_list, title, width, height) :
         download_success = 0
         
         directory = "emoji/" + title + "/"
@@ -43,17 +45,18 @@ class emoji_extractor() :
         
         for url in url_list :
             try :
-                response = requests.get(url, timeout=2, headers=self.headers)
+                response = requests.get(url, timeout=5, headers=self.headers)
             except requests.exceptions.TimeoutError as e :
-                continue
+                break
             
             content_type = response.headers.get("Content-Type")
             extension = "." + content_type.split('/')[-1]
             file_name = str(url).split('/')[-1]
-            
+            path = os.path.join(directory, file_name + extension)
             if response.status_code == 200 :
-                with open(os.path.join(directory, file_name + extension), "wb") as file:
+                with open(path, "wb") as file:
                     file.write(response.content)
+                    emoji_modifier.resize_image(path, width, height, extension)
                 download_success += 1
             else :
                 print("Download Error : ", response.status_code)
