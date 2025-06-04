@@ -56,7 +56,7 @@ class emoji_extractor() :
             if response.status_code == 200 :
                 with open(path, "wb") as file:
                     file.write(response.content)
-                    emoji_modifier.resize_image(path, width, height, extension)
+                emoji_modifier.resize_image(path, width, height, extension)
                 download_success += 1
             else :
                 print("Download Error : ", response.status_code)

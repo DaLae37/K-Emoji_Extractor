@@ -8,21 +8,21 @@ class emoji_modifier() :
     @staticmethod
     def resize_image(path, width, height, extension) :
         emoji_byte_array = np.fromfile(path, np.uint8)
-        emoji = cv2.imdecode(emoji_byte_array, cv2.IMREAD_COLOR)
+        emoji = cv2.imdecode(emoji_byte_array, cv2.IMREAD_UNCHANGED)
         
         if emoji is None :
             print("Resize Image Load Failed!")
             return
         
         if width != emoji.shape[1] and width != 0:
-            if width > emoji.shape[1] :
+            if width < emoji.shape[1] :
                 inter_method = cv2.INTER_AREA
             else :
                 inter_method = cv2.INTER_LINEAR
             emoji = cv2.resize(emoji, (width, emoji.shape[0]), interpolation=inter_method)
             
         if height != emoji.shape[0] and height != 0:
-            if height > emoji.shape[0] :
+            if height < emoji.shape[0] :
                 inter_method = cv2.INTER_AREA
             else :
                 inter_method = cv2.INTER_LINEAR
