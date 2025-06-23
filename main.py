@@ -14,7 +14,7 @@ if __name__ == "__main__" :
             print("Find 0 Result, Try Again")
             continue
         else :
-            index = 1
+            index = 1   
             for emo in emoji_list :
                 print(str(index) + " : " + emo.title + " - " + emo.artist)
                 index += 1

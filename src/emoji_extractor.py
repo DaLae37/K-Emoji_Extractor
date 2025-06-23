@@ -1,6 +1,5 @@
 import requests
 import os
-
 from src.emoji_modifier import emoji_modifier
 
 class emoji_extractor() :
@@ -56,7 +55,10 @@ class emoji_extractor() :
             if response.status_code == 200 :
                 with open(path, "wb") as file:
                     file.write(response.content)
-                emoji_modifier.resize_image(path, width, height, extension)
+                if extension == ".gif" :
+                    emoji_modifier.resize_animation(path, width, height, extension)
+                else :
+                    emoji_modifier.resize_image(path, width, height, extension)
                 download_success += 1
             else :
                 print("Download Error : ", response.status_code)

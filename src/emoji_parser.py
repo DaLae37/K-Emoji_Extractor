@@ -15,7 +15,8 @@ class emoji_parser() :
     
     def get_download_url(self, data) :
         url_list = list()
-
+        url_list.append(data["result"]["titleDetailUrl"])
+        
         for thumbnail in data["result"]["thumbnailUrls"] :
             url_list.append(thumbnail)
         
