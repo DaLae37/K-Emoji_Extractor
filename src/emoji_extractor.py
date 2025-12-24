@@ -11,8 +11,8 @@ class emoji_extractor() :
     def search_emoji_data(self, query) :
         url = "https://e.kakao.com/api/v1/search?query=" + query
         try :
-            response = requests.get(url, timeout=2, headers=self.headers)
-        except requests.exceptions.TimeoutError as e :
+            response = requests.get(url, timeout=2, headers=self.headers, verify=True)
+        except requests.exceptions.Timeout as e :
             print("Timeout Error : ", e)
             return 0
             
@@ -25,8 +25,8 @@ class emoji_extractor() :
     def get_emoji_urls(self, titleUrl) :
         url = "https://e.kakao.com/api/v1/items/t/" + titleUrl
         try :
-            response = requests.get(url, timeout=2, headers=self.headers)
-        except requests.exceptions.TimeoutError as e :
+            response = requests.get(url, timeout=2, headers=self.headers, verify=True)
+        except requests.exceptions.Timeout as e :
             print("Timeout Error : ", e)
             return 0
         
@@ -44,8 +44,8 @@ class emoji_extractor() :
         
         for url in url_list :
             try :
-                response = requests.get(url, timeout=5, headers=self.headers)
-            except requests.exceptions.TimeoutError as e :
+                response = requests.get(url, timeout=5, headers=self.headers, verify=True)
+            except requests.exceptions.Timeout as e :
                 break
             
             content_type = response.headers.get("Content-Type")

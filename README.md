@@ -20,3 +20,6 @@ python main.py
 ![HowToUse](screenshot/howtouse.webp)
 4. Check your results
 ![Result](screenshot/result.webp)
+
+# Contributor
+@stellar-halo
