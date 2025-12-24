@@ -22,4 +22,4 @@ python main.py
 ![Result](screenshot/result.webp)
 
 # Contributor
-@stellar-halo
+Thanks to [@stellar-halo](https://github.com/stellar-halo)
